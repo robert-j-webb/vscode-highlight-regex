@@ -87,7 +87,7 @@ export function activate(context: vscode.ExtensionContext) {
 	}
 }
 
-const colors = ["myextension.red", "myextension.blue", "myextension.green"];
+const colors = ["regexHighlighter.red", "regexHighlighter.blue", "regexHighlighter.green"];
 function* getDecorationType() {
 	// infinite color loop
 	for (let i = 0; ; i >= colors.length ? (i = 0) : i++) {

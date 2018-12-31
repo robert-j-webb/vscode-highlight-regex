@@ -1,8 +1,7 @@
 {
-  "name": "decorator-sample",
-  "description": "Sample for the decorator API",
+  "name": "regex-highlighter",
+  "description": "Allows vscode devs to easily if their regex matches or not.",
   "version": "0.0.1",
-  "publisher": "vscode-samples",
   "license": "MIT",
   "engines": {
     "vscode": "^1.15.0"
@@ -20,7 +19,7 @@
   "contributes": {
     "colors": [
       {
-        "id": "myextension.red",
+        "id": "regexHighlighter.red",
         "description": "Background decoration color for large numbers",
         "defaults": {
           "dark": "#FF000055",
@@ -29,7 +28,7 @@
         }
       },
       {
-        "id": "myextension.blue",
+        "id": "regexHighlighter.blue",
         "description": "Background decoration color for large numbers",
         "defaults": {
           "light": "#6f00ff55",
@@ -38,7 +37,7 @@
         }
       },
       {
-        "id": "myextension.green",
+        "id": "regexHighlighter.green",
         "description": "Background decoration color for large numbers",
         "defaults": {
           "light": "#00ff0d55",
