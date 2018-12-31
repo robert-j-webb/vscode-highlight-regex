@@ -12,18 +12,18 @@ It can be created using `vscode.window.createTextEditorDecorationType`. It takes
 
 ```typescript
 const smallNumberDecorationType = vscode.window.createTextEditorDecorationType({
-    borderWidth: '1px',
-    borderStyle: 'solid',
-    overviewRulerColor: 'blue',
-    overviewRulerLane: vscode.OverviewRulerLane.Right,
-    light: {
-        // this color will be used in light color themes
-        borderColor: 'darkblue'
-    },
-    dark: {
-        // this color will be used in dark color themes
-        borderColor: 'lightblue'
-    }
+  borderWidth: '1px',
+  borderStyle: 'solid',
+  overviewRulerColor: 'blue',
+  overviewRulerLane: vscode.OverviewRulerLane.Right,
+  light: {
+    // this color will be used in light color themes
+    borderColor: 'darkblue'
+  },
+  dark: {
+    // this color will be used in dark color themes
+    borderColor: 'lightblue'
+  }
 });
 ```
 
@@ -43,14 +43,14 @@ const smallNumbers: vscode.DecorationOptions[] = [];
 
 let match;
 
-while (match = regEx.exec(text)) {
-    const startPos = activeEditor.document.positionAt(match.index);
-    const endPos = activeEditor.document.positionAt(match.index + match[0].length);
+while ((match = regEx.exec(text))) {
+  const startPos = activeEditor.document.positionAt(match.index);
+  const endPos = activeEditor.document.positionAt(match.index + match[0].length);
 
-const decoration = { range: new vscode.Range(startPos, endPos), hoverMessage: 'Number **' + match[0] + '**' };
-    if (match[0].length < 3) {
-        smallNumbers.push(decoration);
-    }
+  const decoration = { range: new vscode.Range(startPos, endPos), hoverMessage: 'Number **' + match[0] + '**' };
+  if (match[0].length < 3) {
+    smallNumbers.push(decoration);
+  }
 }
 ```
 
@@ -58,8 +58,8 @@ const decoration = { range: new vscode.Range(startPos, endPos), hoverMessage: 'N
 
 Finally, you can insert the decoration into any editor with the `setDecorations` method of the [TextEditor](https://code.visualstudio.com/api/references/vscode-api#TextEditor) class. It takes two arguments:
 
-* The `TextEditorDecorationType` defined for the decoration.
-* Either a `Range` array or a `DecorationOptions` array.
+- The `TextEditorDecorationType` defined for the decoration.
+- Either a `Range` array or a `DecorationOptions` array.
 
 ```typescript
 activeEditor.setDecorations(smallNumberDecorationType, smallNumbers);

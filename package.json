@@ -1,63 +1,68 @@
 {
-  "name": "regex-highlighter",
-  "description": "Allows vscode devs to easily if their regex matches or not.",
-  "version": "0.0.1",
-  "license": "MIT",
-  "engines": {
-    "vscode": "^1.15.0"
-  },
-  "repository": {
-    "url": "https://github.com/Microsoft/vscode-extension-samples"
-  },
-  "categories": [
-    "Other"
-  ],
-  "activationEvents": [
-    "*"
-  ],
-  "main": "./out/extension.js",
-  "contributes": {
-    "colors": [
-      {
-        "id": "regexHighlighter.red",
-        "description": "Background decoration color for large numbers",
-        "defaults": {
-          "dark": "#FF000055",
-          "light": "#FF000055",
-          "highContrast": "#FF000055"
-        }
-      },
-      {
-        "id": "regexHighlighter.blue",
-        "description": "Background decoration color for large numbers",
-        "defaults": {
-          "light": "#6f00ff55",
-          "dark": "#6f00ff55",
-          "highContrast": "#6f00ff55"
-        }
-      },
-      {
-        "id": "regexHighlighter.green",
-        "description": "Background decoration color for large numbers",
-        "defaults": {
-          "light": "#00ff0d55",
-          "dark": "#00ff0d55",
-          "highContrast": "#00ff0d55"
-        }
-      }
-    ]
-  },
-  "scripts": {
-    "vscode:prepublish": "npm run compile",
-    "compile": "tsc -p ./",
-    "watch": "tsc -watch -p ./",
-    "postinstall": "node ./node_modules/vscode/bin/install",
-    "test": "npm run compile && node ./node_modules/vscode/bin/test"
-  },
-  "devDependencies": {
-    "@types/node": "^8.9.1",
-    "tslint": "^5.11.0",
-    "typescript": "^3.1.3",
-    "vscode": "^1.1.22"
-  }
+    "name": "regex-highlighter",
+    "description": "Allows vscode devs to easily if their regex matches or not.",
+    "version": "0.0.1",
+    "license": "MIT",
+    "engines": {
+        "vscode": "^1.15.0"
+    },
+    "repository": {
+        "url": "https://github.com/Microsoft/vscode-extension-samples"
+    },
+    "categories": [
+        "Other"
+    ],
+    "activationEvents": [
+        "*"
+    ],
+    "main": "./out/extension.js",
+    "contributes": {
+        "colors": [
+            {
+                "id": "regexHighlighter.red",
+                "description": "Background decoration color for large numbers",
+                "defaults": {
+                    "dark": "#FF000055",
+                    "light": "#FF000055",
+                    "highContrast": "#FF000055"
+                }
+            },
+            {
+                "id": "regexHighlighter.blue",
+                "description": "Background decoration color for large numbers",
+                "defaults": {
+                    "light": "#6f00ff55",
+                    "dark": "#6f00ff55",
+                    "highContrast": "#6f00ff55"
+                }
+            },
+            {
+                "id": "regexHighlighter.green",
+                "description": "Background decoration color for large numbers",
+                "defaults": {
+                    "light": "#00ff0d55",
+                    "dark": "#00ff0d55",
+                    "highContrast": "#00ff0d55"
+                }
+            }
+        ]
+    },
+    "scripts": {
+        "vscode:prepublish": "npm run compile",
+        "compile": "tsc -p ./",
+        "watch": "tsc -watch -p ./",
+        "postinstall": "node ./node_modules/vscode/bin/install",
+        "pretty": "prettier --config .prettierrc --loglevel warn --write \"./**/*.{ts,md,json}\" && tslint --project tsconfig.json --fix",
+        "test": "npm run compile && node ./node_modules/vscode/bin/test"
+    },
+    "devDependencies": {
+        "@types/node": "^8.9.1",
+        "mocha": "^5.2.0",
+        "prettier": "^1.15.3",
+        "prettier-tslint": "^0.4.1",
+        "tslint": "^5.11.0",
+        "tslint-prettiest": "0.0.1",
+        "typescript": "^3.1.3",
+        "vscode": "^1.1.22"
+    }
 }
