@@ -1,26 +1,9 @@
 import * as vscode from "vscode";
+import { regexRegex, getRegexMatches, getDecoration, getDecorationType  } from './util';
 
 // this method is called when vs code is activated
 export function activate(context: vscode.ExtensionContext) {
 	console.log("decorator sample is activated");
-
-	// create a decorator type that we use to decorate small numbers
-	const smallNumberDecorationType = vscode.window.createTextEditorDecorationType(
-		{
-			borderWidth: "1px",
-			borderStyle: "solid",
-			overviewRulerColor: "blue",
-			overviewRulerLane: vscode.OverviewRulerLane.Right,
-			light: {
-				// this color will be used in light color themes
-				borderColor: "darkblue"
-			},
-			dark: {
-				// this color will be used in dark color themes
-				borderColor: "lightblue"
-			}
-		}
-	);
 
 	let activeEditor = vscode.window.activeTextEditor;
 	if (activeEditor) {
@@ -60,8 +43,6 @@ export function activate(context: vscode.ExtensionContext) {
 		if (!activeEditor) {
 			return;
 		}
-		//https://regex101.com/r/PDzGpB/1
-		const regexRegex = /([^\/](\/[^\/]+\/)|(new\sRegExp\('[^']+'\)))/gm;
 		const text = activeEditor.document.getText();
 		const decorationTypes = getDecorationType();
 
@@ -85,42 +66,4 @@ export function activate(context: vscode.ExtensionContext) {
 			}, index * 2);
 		});
 	}
-}
-
-const colors = ["regexHighlighter.red", "regexHighlighter.blue", "regexHighlighter.green"];
-function* getDecorationType() {
-	// infinite color loop
-	for (let i = 0; ; i >= colors.length ? (i = 0) : i++) {
-		// create a decorator type that we use to decorate large numbers
-		yield vscode.window.createTextEditorDecorationType({
-			cursor: "crosshair",
-			// use a themable color. See package.json for the declaration and default values.
-			backgroundColor: { id: colors[i] }
-		});
-	}
-}
-
-function getRegexMatches(regex: RegExp, text: string): RegExpMatchArray[] {
-	const matches = [];
-	let regexMatch;
-	while ((regexMatch = regex.exec(text)) !== null) {
-		matches.push(regexMatch);
-	}
-	return matches;
-}
-
-function getDecoration(
-	activeEditor,
-	match: RegExpMatchArray,
-	index: number,
-	regex: string
-): vscode.DecorationOptions {
-	const startPos = activeEditor.document.positionAt(match.index);
-	const endPos = activeEditor.document.positionAt(
-		match.index + match[0].length
-	);
-	return {
-		range: new vscode.Range(startPos, endPos),
-		hoverMessage: `${regex}:${index}:${match[0]}`
-	};
 }
